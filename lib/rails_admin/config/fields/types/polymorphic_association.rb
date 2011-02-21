@@ -30,7 +30,7 @@ module RailsAdmin
 
           def polymorphic_type_collection
             associated_model_config.map do |config|
-              [config.list.label, config.abstract_model.model.name]
+              [config.list.label, config.abstract_model.model.name.downcase]
             end
           end
 

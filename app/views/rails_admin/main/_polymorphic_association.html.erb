@@ -10,6 +10,6 @@
 %>
                   <%= label_tag "#{model_name}_#{field.name}", field.label %>
                   <%= select model_name, foreign_type, type_collection, {:selected => selected_type}, :class => "selectField #{field.has_errors? ? "errorField" : nil}" %>
-                  <% field.associated_model_config.each do |associated_model| %>
-                    <%= select model_name, field.name, field.associated_collection(associated_model), {:include_blank => true, :selected => selected}, :class => "selectField #{field.has_errors? ? "errorField" : nil}", :style => "margin-left:10px;" %>
+                  <% field.associated_model_config.each_with_index do |associated_model, index| %>
+                    <%= select model_name, field.name, field.associated_collection(associated_model), {:include_blank => true, :selected => selected}, :id => type_collection[index][0].downcase, :class => "selectField #{field.has_errors? ? "errorField" : nil}" %>
                   <% end %>
