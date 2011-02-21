@@ -17,8 +17,8 @@ module RailsAdmin
             associated_model_config.length > 0
           end
 
-          def associated_collection
-            config = associated_model_config.first
+          def associated_collection(associated_model = associated_model_config.first)
+            config = associated_model
             config.abstract_model.all.map do |object|
               [config.bind(:object, object).list.object_label, object.id]
             end
